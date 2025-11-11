@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useState } from "react"
 import { Menu, X, ShoppingCart } from "lucide-react"
+import Image from "next/image"
 
 interface HeaderProps {
   cartCount: number
@@ -17,9 +18,7 @@ export function Header({ cartCount }: HeaderProps) {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">C</span>
-            </div>
+            <Image src={"/cantevo_logo.jpg"} width={50} height={50} alt="logo"/>
             <span className="font-bold text-lg hidden sm:inline text-foreground">Cantevo</span>
           </Link>
 

@@ -10,29 +10,19 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Cantevo - Online Canteen Automation System",
   description: "Fast and easy food ordering from the canteen with real-time order tracking",
-  generator: "v0.app",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 5,
-    userScalable: true,
-  },
+  generator: "Sayan",
+  // viewport: {
+  //   width: "device-width",
+  //   initialScale: 1,
+  //   maximumScale: 5,
+  //   userScalable: true,
+  // },
   icons: {
     icon: [
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
-      },
-      {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/cantevo_logo.jpg",
       },
     ],
-    apple: "/apple-icon.png",
   },
 }
 
