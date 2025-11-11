@@ -1,0 +1,257 @@
+[
+  {
+    "id": "b1",
+    "category": "Breakfast",
+    "name": "Masala Dosa",
+    "description": "Crispy South Indian crepe with spiced potato filling, served with sambar and chutney",
+    "price": 120,
+    "image": "/menu/masaladosa.webp",
+    "nutritionalInfo": {
+      "calories": 280,
+      "protein": "8g",
+      "carbs": "45g",
+      "fats": "6g"
+    },
+    "availability": true,
+    "rating": 4.6,
+    "reviews": 145
+  },
+  {
+    "id": "b2",
+    "category": "Breakfast",
+    "name": "Idli with Sambar",
+    "description": "Fluffy steamed rice cakes, served with tangy sambar and coconut chutney",
+    "price": 100,
+    "image": "/menu/idli.jpg",
+    "nutritionalInfo": {
+      "calories": 220,
+      "protein": "7g",
+      "carbs": "42g",
+      "fats": "3g"
+    },
+    "availability": true,
+    "rating": 4.7,
+    "reviews": 198
+  },
+  {
+    "id": "b3",
+    "category": "Breakfast",
+    "name": "Aloo Paratha",
+    "description": "Whole wheat flatbread stuffed with spiced potatoes, served with butter and pickle",
+    "price": 90,
+    "image": "/menu/alooparatha.webp",
+    "nutritionalInfo": {
+      "calories": 320,
+      "protein": "9g",
+      "carbs": "48g",
+      "fats": "10g"
+    },
+    "availability": true,
+    "rating": 4.5,
+    "reviews": 167
+  },
+  {
+    "id": "l1",
+    "category": "Lunch",
+    "name": "Butter Chicken",
+    "description": "Tender chicken in a creamy tomato-butter gravy, served with basmati rice",
+    "price": 250,
+    "image": "/menu/butterchicken.jpeg",
+    "nutritionalInfo": {
+      "calories": 420,
+      "protein": "32g",
+      "carbs": "45g",
+      "fats": "18g"
+    },
+    "availability": true,
+    "rating": 4.8,
+    "reviews": 342
+  },
+  {
+    "id": "l2",
+    "category": "Lunch",
+    "name": "Palak Paneer",
+    "description": "Cottage cheese cubes in spinach gravy, served with Indian flatbread",
+    "price": 200,
+    "image": "/menu/palakpaneer.webp",
+    "nutritionalInfo": {
+      "calories": 280,
+      "protein": "18g",
+      "carbs": "20g",
+      "fats": "15g"
+    },
+    "availability": true,
+    "rating": 4.6,
+    "reviews": 234
+  },
+  {
+    "id": "l3",
+    "category": "Lunch",
+    "name": "Chana Masala",
+    "description": "Spiced chickpeas in tomato-onion gravy, served with rice or roti",
+    "price": 150,
+    "image": "/menu/chanamasala.avif",
+    "nutritionalInfo": {
+      "calories": 320,
+      "protein": "14g",
+      "carbs": "50g",
+      "fats": "8g"
+    },
+    "availability": true,
+    "rating": 4.4,
+    "reviews": 189
+  },
+  {
+    "id": "l4",
+    "category": "Lunch",
+    "name": "Fish Curry",
+    "description": "Fresh fish in aromatic coconut-based South Indian curry",
+    "price": 280,
+    "image": "/menu/fishcurry.webp",
+    "nutritionalInfo": {
+      "calories": 350,
+      "protein": "38g",
+      "carbs": "15g",
+      "fats": "16g"
+    },
+    "availability": true,
+    "rating": 4.7,
+    "reviews": 156
+  },
+  {
+    "id": "s1",
+    "category": "Snacks",
+    "name": "Samosa",
+    "description": "Crispy pastry with spiced potato and pea filling, served with chutney",
+    "price": 40,
+    "image": "/menu/samosa.jpg",
+    "nutritionalInfo": {
+      "calories": 180,
+      "protein": "4g",
+      "carbs": "22g",
+      "fats": "8g"
+    },
+    "availability": true,
+    "rating": 4.5,
+    "reviews": 267
+  },
+  {
+    "id": "s2",
+    "category": "Snacks",
+    "name": "Vada Pav",
+    "description": "Spiced potato fritter with chutney, served in a pav",
+    "price": 50,
+    "image": "/menu/vadapao.jpg",
+    "nutritionalInfo": {
+      "calories": 220,
+      "protein": "6g",
+      "carbs": "30g",
+      "fats": "8g"
+    },
+    "availability": true,
+    "rating": 4.3,
+    "reviews": 145
+  },
+  {
+    "id": "s3",
+    "category": "Snacks",
+    "name": "Pakora Mix",
+    "description": "Mixed vegetable fritters, crispy and golden, with mint chutney",
+    "price": 60,
+    "image": "/menu/pakodamix.jpg",
+    "nutritionalInfo": {
+      "calories": 240,
+      "protein": "7g",
+      "carbs": "28g",
+      "fats": "10g"
+    },
+    "availability": true,
+    "rating": 4.4,
+    "reviews": 178
+  },
+  {
+    "id": "s4",
+    "category": "Snacks",
+    "name": "Spring Rolls",
+    "description": "Crispy vegetable spring rolls with sweet and spicy sauce",
+    "price": 70,
+    "image": "/menu/springrolls.webp",
+    "nutritionalInfo": {
+      "calories": 200,
+      "protein": "5g",
+      "carbs": "24g",
+      "fats": "9g"
+    },
+    "availability": true,
+    "rating": 4.2,
+    "reviews": 123
+  },
+  {
+    "id": "d1",
+    "category": "Drinks",
+    "name": "Masala Chai",
+    "description": "Fragrant Indian tea with spices, ginger, and milk",
+    "price": 30,
+    "image": "/menu/chai.jpg",
+    "nutritionalInfo": {
+      "calories": 80,
+      "protein": "2g",
+      "carbs": "12g",
+      "fats": "2g"
+    },
+    "availability": true,
+    "rating": 4.6,
+    "reviews": 412
+  },
+  {
+    "id": "d2",
+    "category": "Drinks",
+    "name": "Mango Lassi",
+    "description": "Refreshing yogurt-based drink with fresh mango puree",
+    "price": 60,
+    "image": "/menu/mangolassi.jpeg",
+    "nutritionalInfo": {
+      "calories": 140,
+      "protein": "5g",
+      "carbs": "28g",
+      "fats": "1g"
+    },
+    "availability": true,
+    "rating": 4.7,
+    "reviews": 289
+  },
+  {
+    "id": "d3",
+    "category": "Drinks",
+    "name": "Fresh Lemonade",
+    "description": "Freshly squeezed lemon juice with mint and sugar",
+    "price": 40,
+    "image": "/menu/lemonade.jpg",
+    "nutritionalInfo": {
+      "calories": 50,
+      "protein": "1g",
+      "carbs": "12g",
+      "fats": "0g"
+    },
+    "availability": true,
+    "rating": 4.4,
+    "reviews": 156
+  },
+  {
+    "id": "d4",
+    "category": "Drinks",
+    "name": "Fruit Smoothie",
+    "description": "Blended mix of seasonal fruits with yogurt",
+    "price": 80,
+    "image": "/menu/smoothie.jpg",
+    "nutritionalInfo": {
+      "calories": 180,
+      "protein": "6g",
+      "carbs": "36g",
+      "fats": "2g"
+    },
+    "availability": true,
+    "rating": 4.5,
+    "reviews": 234
+  }
+]
