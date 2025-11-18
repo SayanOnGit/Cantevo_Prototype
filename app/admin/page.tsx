@@ -33,11 +33,19 @@ export default function AdminPage() {
     price: "",
   })
 
+  const MENU_KEY = "menu_items"
+
   useEffect(() => {
     setMounted(true)
     const savedOrders: Order[] = load("orders", [])
     setOrders(savedOrders)
-    setMenuItems(menu as MenuItem[])
+    // load persisted menu items first, fallback to bundled menu.json
+    const persisted: MenuItem[] = load(MENU_KEY, [] as MenuItem[])
+    if (persisted && persisted.length > 0) {
+      setMenuItems(persisted)
+    } else {
+      setMenuItems(menu as MenuItem[])
+    }
   }, [])
 
   if (!mounted) {
@@ -68,8 +76,45 @@ export default function AdminPage() {
       return
     }
 
-    // In a real app, this would update the menu.json
-    console.log("Saving menu item:", formData)
+    // If editingItem is set, update existing item, otherwise create a new one
+    if (editingItem) {
+      const updatedItem: MenuItem = {
+        ...editingItem,
+        name: formData.name.trim(),
+        category: formData.category,
+        description: formData.description.trim(),
+        price: Number(formData.price),
+      }
+
+      const updated = menuItems.map((m) => (m.id === editingItem.id ? updatedItem : m))
+      setMenuItems(updated)
+      try {
+        save(MENU_KEY, updated)
+      } catch (e) {
+        console.error("Failed to persist edited menu item:", e)
+      }
+    } else {
+      const newItem: MenuItem = {
+        id: `u${Date.now()}`,
+        name: formData.name.trim(),
+        category: formData.category,
+        description: formData.description.trim(),
+        price: Number(formData.price),
+        image: "",
+        availability: true,
+        rating: 0,
+        reviews: 0,
+      }
+
+      const updated = [newItem, ...menuItems]
+      setMenuItems(updated)
+      try {
+        save(MENU_KEY, updated)
+      } catch (e) {
+        console.error("Failed to persist menu items:", e)
+      }
+    }
+
     setShowAddForm(false)
     setEditingItem(null)
     setFormData({ name: "", category: "Breakfast", description: "", price: "" })
@@ -77,8 +122,13 @@ export default function AdminPage() {
 
   const handleDeleteMenuItem = (id: string) => {
     if (confirm("Are you sure?")) {
-      // In a real app, this would delete from menu.json
-      console.log("Deleting item:", id)
+      const updated = menuItems.filter((m) => m.id !== id)
+      setMenuItems(updated)
+      try {
+        save(MENU_KEY, updated)
+      } catch (e) {
+        console.error("Failed to persist menu items after delete:", e)
+      }
     }
   }
 
@@ -343,9 +393,21 @@ export default function AdminPage() {
                       </p>
                     </div>
                     <div className="flex gap-2">
-                      <button className="p-2 hover:bg-muted rounded-lg transition">
-                        <Edit2 size={18} className="text-primary" />
-                      </button>
+                        <button
+                          onClick={() => {
+                            setEditingItem(item)
+                            setFormData({
+                              name: item.name,
+                              category: item.category,
+                              description: item.description || "",
+                              price: String(item.price || ""),
+                            })
+                            setShowAddForm(true)
+                          }}
+                          className="p-2 hover:bg-muted rounded-lg transition"
+                        >
+                          <Edit2 size={18} className="text-primary" />
+                        </button>
                       <button
                         onClick={() => handleDeleteMenuItem(item.id)}
                         className="p-2 hover:bg-destructive/10 rounded-lg transition"

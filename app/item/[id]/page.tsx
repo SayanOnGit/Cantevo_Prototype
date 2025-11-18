@@ -22,8 +22,22 @@ export default function ItemDetailPage() {
   const [showReviewForm, setShowReviewForm] = useState(false)
 
   useEffect(() => {
-    const foundItem = menu.find((m) => m.id === itemId)
-    setItem(foundItem || null)
+    // Check persisted menu items first (admin additions), then fall back to bundled menu.json.
+    // Use direct localStorage access so an explicit empty array saved by admin is respected.
+    try {
+      const raw = localStorage.getItem("menu_items")
+      if (raw !== null) {
+        const persisted: MenuItem[] = JSON.parse(raw)
+        const foundInPersisted = persisted.find((m) => m.id === itemId)
+        setItem(foundInPersisted || null)
+      } else {
+        const foundItem = menu.find((m) => m.id === itemId)
+        setItem(foundItem || null)
+      }
+    } catch {
+      const foundItem = menu.find((m) => m.id === itemId)
+      setItem(foundItem || null)
+    }
 
     // Load reviews from localStorage
     const allReviews: Review[] = load("reviews", [])

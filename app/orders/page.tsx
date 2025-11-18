@@ -15,7 +15,14 @@ export default function OrdersPage() {
   useEffect(() => {
     setMounted(true)
     const savedOrders: Order[] = load("orders", [])
-    setOrders(savedOrders.reverse())
+    // Determine current user (signed-in) or saved profile
+    const authUser = load<{ username: string; email: string } | null>("authUser", null as any)
+    const profile = load<{ name: string; email: string } | null>("userProfile", null as any)
+
+    const currentEmail = authUser?.email || profile?.email || null
+
+    const filtered = currentEmail ? savedOrders.filter((o) => o.ownerEmail === currentEmail || o.email === currentEmail) : []
+    setOrders(filtered.reverse())
   }, [])
 
   if (!mounted) {

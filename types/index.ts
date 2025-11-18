@@ -24,6 +24,7 @@ export interface Order {
   id: string
   customerName: string
   email: string
+  ownerEmail?: string
   pickupTime: string
   items: CartItem[]
   subtotal: number

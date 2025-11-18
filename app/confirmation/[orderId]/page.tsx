@@ -15,8 +15,35 @@ export default function ConfirmationPage({ params }: { params: { orderId: string
   useEffect(() => {
     setMounted(true)
     const orders: Order[] = load("orders", [])
-    const foundOrder = orders.find((o) => o.id === params.orderId)
-    setOrder(foundOrder || null)
+    const authUser = load<{ username: string; email: string } | null>("authUser", null as any)
+    const profile = load<{ name: string; email: string } | null>("userProfile", null as any)
+    const currentEmail = authUser?.email || profile?.email || null
+
+    let foundOrder = orders.find((o) => o.id === params.orderId)
+
+    // If the order wasn't found in the persisted list (race or new), check a transient last_order saved during checkout
+    if (!foundOrder) {
+      try {
+        const raw = localStorage.getItem("last_order")
+        if (raw) {
+          const last = JSON.parse(raw) as Order
+          if (last && last.id === params.orderId) {
+            foundOrder = last
+          }
+        }
+      } catch {}
+    }
+
+    // Only allow viewing if order belongs to current user (by ownerEmail/order.email) or if we have the transient order
+    if (!foundOrder) {
+      setOrder(null)
+    } else if (!currentEmail) {
+      setOrder(foundOrder)
+    } else if (foundOrder.ownerEmail === currentEmail || foundOrder.email === currentEmail) {
+      setOrder(foundOrder)
+    } else {
+      setOrder(null)
+    }
   }, [params.orderId])
 
   if (!mounted) {

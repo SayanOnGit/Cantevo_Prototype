@@ -117,10 +117,15 @@ export default function CheckoutPage() {
     const loyaltyDiscount = useLoyaltyPoints ? Math.min(userProfile.loyaltyPoints, subtotal) : 0
     const total = Math.max(0, subtotal - promoDiscount - loyaltyDiscount)
 
+    // Determine owner from signed-in user (if any) or use the provided email
+    const authUser = load<{ username: string; email: string } | null>("authUser", null as any)
+    const ownerEmail = authUser?.email || formData.email
+
     const order: Order = {
       id: `ORD-${Date.now()}`,
       customerName: formData.customerName,
       email: formData.email,
+      ownerEmail,
       pickupTime: formData.pickupTime,
       items: cart,
       subtotal,
@@ -136,6 +141,11 @@ export default function CheckoutPage() {
     const orders: Order[] = load("orders", [])
     orders.push(order)
     save("orders", orders)
+
+    // Save a transient copy so the confirmation page can show it immediately
+    try {
+      save("last_order", order)
+    } catch {}
 
     const earnedPoints = Math.floor(total)
     const updatedProfile: UserProfile = {
